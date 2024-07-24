@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html lang="en">
+
+{% include 'components/head.html' %}
+
+<body>
+
+  {% include 'components/navbar.html' %}
+
+  <main id="main">
+
+    <section class="section pb-5">
+      <div class="container">
+
+        <div class="row mb-5 align-items-end">
+          <div class="col-md-6" data-aos="fade-up">
+            <h2>Login</h2>
+          </div>
+
+        </div>
+
+        <div class="row">
+          <div class="col-md-6 mb-5 mb-md-0" data-aos="fade-up">
+
+            <form action="{{ url_for('login') }}" method="POST" class="php-email-form" novalidate>
+              {{ form.csrf_token }}
+              <div class="row gy-3">
+                <div class="col-md-6 form-group">
+                  {{ form.id.label }}
+                  {{ form.id(class_="form-control") }}
+                  {% for error in errors['id'] %}
+                  <span style="color: #cc0000">{{ error }}</span><br />
+                  {% endfor %}
+                </div>
+                <div class="col-md-6 form-group">
+                  {{ form.password.label }}
+                  {{ form.password(class_="form-control") }}
+                  {% for error in errors['password'] %}
+                  <span style="color: #cc0000">{{ error }}</span><br />
+                  {% endfor %}
+                </div>
+
+                <div class="col-md-12 my-3">
+                  <div></div>
+                </div>
+
+                {{ form.submit(class_="col-md-6 mt-0 form-group readmore d-block w-100") }}
+              </div>
+
+            </form>
+
+          </div>
+
+        </div>
+
+      </div>
+
+    </section>
+
+  </main><!-- End #main -->
+
+  {% include 'components/footer.html' %}
+
+  {% include 'components/scripts.html' %}
+
+</body>
+
+</html>

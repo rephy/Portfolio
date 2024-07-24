@@ -1,0 +1,26 @@
+<section class="section site-portfolio">
+      <div class="container">
+        <div class="row mb-5 align-items-center">
+          <div class="col-md-12 col-lg-6 mb-4 mb-lg-0" data-aos="fade-up">
+            <h2>Hey, I'm Raphael Manayon</h2>
+            <p class="mb-0">Cross-Platform Developer & Data Scientist</p>
+          </div>
+        </div>
+        <div id="portfolio-grid" class="row no-gutter" data-aos="fade-up" data-aos-delay="200">
+          {% for work in works %}
+          <div class="item web col-sm-6 col-md-4 col-lg-4 mb-4">
+            <a href="{{ url_for('work_single', id=work.id) }}" class="item-wrap fancybox">
+              <div class="work-info">
+                <h3>{{ work.name }}</h3>
+                <span>{{ work.type }}</span>
+              </div>
+              <img class="img-fluid" src="data:image/png;base64,{{ work.image }}">
+            </a>
+          </div>
+          {% endfor %}
+        </div>
+        {% if is_admin %}
+        <a href="{{ url_for('new_work') }}" class="col-md-6 mt-0 form-group readmore d-block w-100" style="text-align: center">New Work</a>
+        {% endif %}
+      </div>
+</section>

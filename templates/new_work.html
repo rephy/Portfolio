@@ -1,0 +1,99 @@
+<!DOCTYPE html>
+<html lang="en">
+
+{% include 'components/head.html' %}
+
+<body>
+
+  {% include 'components/navbar.html' %}
+
+  <main id="main">
+
+    <section class="section pb-5">
+      <div class="container">
+
+        <div class="row mb-5 align-items-end">
+          <div class="col-md-6" data-aos="fade-up">
+            <h2>New Work</h2>
+            <p class="mb-0">Hey me! Do your best to make this piece of work stand out!
+            </p>
+          </div>
+
+        </div>
+
+        <div class="row">
+          <div class="col-md-6 mb-5 mb-md-0" data-aos="fade-up">
+
+            <form action="{{ url_for('new_work') }}" method="POST" class="php-email-form" enctype="multipart/form-data" novalidate>
+              {{ form.csrf_token }}
+              <div class="row gy-3">
+                <div class="col-md-6 form-group">
+                  {{ form.name.label }}
+                  {{ form.name(class_="form-control") }}
+                  {% for error in errors['name'] %}
+                  <span style="color: #cc0000">{{ error }}</span>
+                  {% endfor %}
+                </div>
+                <div class="col-md-6 form-group">
+                  {{ form.type.label }}
+                  {{ form.type(class_="form-control") }}
+                  {% for error in errors['type'] %}
+                  <span style="color: #cc0000">{{ error }}</span>
+                  {% endfor %}
+                </div>
+                <div class="col-md-12 form-group">
+                  {{ form.description.label }}
+                  {{ form.description(class_="form-control") }}
+                  {% for error in errors['description'] %}
+                  <span style="color: #cc0000">{{ error }}</span>
+                  {% endfor %}
+                </div>
+                <div class="col-md-12 form-group">
+                  {{ form.efforts.label }}
+                  {{ form.efforts(class_="form-control") }}
+                  {% for error in errors['efforts'] %}
+                  <span style="color: #cc0000">{{ error }}</span>
+                  {% endfor %}
+                </div>
+                <div class="col-md-12 form-group">
+                  {{ form.image.label }}
+                  {{ form.image(class_="form-control") }}
+                  {% for error in errors['image'] %}
+                  <span style="color: #cc0000">{{ error }}</span>
+                  {% endfor %}
+                </div>
+                <div class="col-md-12 form-group">
+                  {{ form.source_code_link.label }}
+                  {{ form.source_code_link(class_="form-control") }}
+                </div>
+                <div class="col-md-12 form-group">
+                  {{ form.website_link.label }}
+                  {{ form.website_link(class_="form-control") }}
+                </div>
+
+                <div class="col-md-12 my-3">
+                  <div></div>
+                </div>
+
+                {{ form.submit(class_="col-md-6 mt-0 form-group readmore d-block w-100") }}
+              </div>
+
+            </form>
+
+          </div>
+
+        </div>
+
+      </div>
+
+    </section>
+
+  </main><!-- End #main -->
+
+  {% include 'components/footer.html' %}
+
+  {% include 'components/scripts.html' %}
+
+</body>
+
+</html>

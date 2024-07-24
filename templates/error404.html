@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="utf-8">
+  <meta content="width=device-width, initial-scale=1.0" name="viewport">
+
+  <title>404 Not Found</title>
+  <meta content="" name="description">
+  <meta content="" name="keywords">
+
+  <link href="static/assets/img/favicon.png" rel="icon">
+  <link href="static/assets/img/apple-touch-icon.png" rel="apple-touch-icon">
+
+  <link href="https://fonts.googleapis.com/css?family=https://fonts.googleapis.com/css?family=Inconsolata:400,500,600,700|Raleway:400,400i,500,500i,600,600i,700,700i" rel="stylesheet">
+
+  <link href="static/assets/vendor/aos/aos.css" rel="stylesheet">
+  <link href="static/assets/vendor/bootstrap/css/bootstrap.min.css" rel="stylesheet">
+  <link href="static/assets/vendor/bootstrap-icons/bootstrap-icons.css" rel="stylesheet">
+  <link href="static/assets/vendor/swiper/swiper-bundle.min.css" rel="stylesheet">
+
+  <link href="static/assets/css/style.css" rel="stylesheet">
+</head>
+
+<body>
+
+    {% include 'components/navbar.html' %}
+
+    <section class="section site-portfolio">
+      <div class="container">
+        <div class="row mb-5 align-items-center">
+          <div class="col-md-12 col-lg-6 mb-4 mb-lg-0" data-aos="fade-up">
+            <h2>Oops, we couldn't load the requested page</h2>
+            <p class="mb-0">While you're here, you can check out some of my works</p>
+          </div>
+        </div>
+        <div id="portfolio-grid" class="row no-gutter" data-aos="fade-up" data-aos-delay="200">
+          {% for work in works %}
+          <div class="item web col-sm-6 col-md-4 col-lg-4 mb-4">
+            <a href="{{ url_for('work_single', id=work.id) }}" class="item-wrap fancybox">
+              <div class="work-info">
+                <h3>{{ work.name }}</h3>
+                <span>{{ work.type }}</span>
+              </div>
+              <img class="img-fluid" src="data:image/png;base64,{{ work.image }}">
+            </a>
+          </div>
+          {% endfor %}
+        </div>
+      </div>
+</section>
+
+    {% include 'components/footer.html' %}
+
+    {% include 'components/scripts.html' %}
+
+</body>
+
+</html>

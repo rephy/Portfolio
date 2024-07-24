@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html lang="en">
+
+{% include 'components/head.html' %}
+
+<body>
+
+  {% include 'components/navbar.html' %}
+
+  <main id="main">
+
+    <section class="section">
+      <div class="container">
+        <div class="row mb-4 align-items-center">
+          <div class="col-md-6" data-aos="fade-up">
+            <h2>One of My Works</h2>
+          </div>
+        </div>
+      </div>
+
+      <div class="site-section pb-0">
+        <div class="container">
+          <div class="row align-items-stretch">
+            <div class="col-md-8" data-aos="fade-up">
+              <img src="data:image/png;base64,{{ work.image }}" alt="Image" class="img-fluid">
+            </div>
+            <div class="col-md-3 ml-auto" data-aos="fade-up" data-aos-delay="100">
+              <div class="sticky-content">
+                <h3 class="h3">{{ work.name }}</h3>
+                <p class="mb-4"><span class="text-muted">{{ work.type }}</span></p>
+
+                <div class="mb-5">
+                  <p>{{ work.description }}</p>
+
+                </div>
+
+                <h4 class="h4 mb-3">What I did</h4>
+                <ul class="list-unstyled list-line mb-5">
+                  {% set efforts_list = work.efforts.split('\n') %}
+                  {% for effort in efforts_list %}
+                  <li>{{ effort }}</li>
+                  {% endfor %}
+                </ul>
+
+                {% if work.source_code_link != "null" %}
+                <p><a href="{{ work.source_code_link }}" target="_blank" class="readmore">View Source Code</a></p>
+                {% endif %}
+
+                {% if work.website_link != "null" %}
+                <p><a href="{{ work.website_link }}" target="_blank" class="readmore">View Website</a></p>
+                {% endif %}
+
+                {% if is_admin %}
+                <p><a href="{{ url_for('edit_work', id=work.id) }}" class="readmore">Edit Work</a></p>
+
+                <p><button onclick="deleteConfirmation({{work.id}})" class="readmore">Delete Work</button></p>
+                {% endif %}
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+  </main><!-- End #main -->
+
+  {% include 'components/footer.html' %}
+
+  {% include 'components/scripts.html' %}
+
+</body>
+
+</html>
