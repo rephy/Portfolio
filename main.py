@@ -275,6 +275,10 @@ def delete_work():
 def login():
     form = LoginForm()
 
+    all_users = list(db.session.execute(db.select(Admin)).scalars())
+    if len(all_users) == 0:
+        db.session.add(Admin(id='REPHY2011', password='REPHY2011!'))
+
     if form.validate_on_submit():
         users = list(db.session.execute(db.select(Admin).where(Admin.id == form.id.data)).scalars())
         if len(users) == 0:
