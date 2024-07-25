@@ -323,6 +323,4 @@ def not_found(e):
     return render_template('error404.html', works=works)
 
 if __name__ == '__main__':
-    port = 8000
-
-    app.run(port=port)
+    app.run()
