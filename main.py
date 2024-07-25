@@ -41,7 +41,7 @@ class Work(db.Model):
 
 class Admin(db.Model, UserMixin):
     id: Mapped[str] = mapped_column(String[10], primary_key=True)
-    password: Mapped[str] = mapped_column(String(20), nullable=False)
+    password: Mapped[str] = mapped_column(Text, nullable=False)
 
 with app.app_context():
     db.create_all()
