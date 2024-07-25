@@ -6,7 +6,7 @@ from wtforms.validators import InputRequired, Email, Length
 from flask_sqlalchemy import SQLAlchemy
 from sqlalchemy.orm import DeclarativeBase, Mapped, mapped_column
 from sqlalchemy import Integer, String, Text
-from flask_login import LoginManager, UserMixin, login_user, current_user
+from flask_login import LoginManager, UserMixin, login_user, current_user, logout_user
 from werkzeug.security import generate_password_hash, check_password_hash
 from functools import wraps
 from dotenv import load_dotenv
@@ -277,7 +277,8 @@ def login():
 
     all_users = list(db.session.execute(db.select(Admin)).scalars())
     if len(all_users) == 0:
-        db.session.add(Admin(id='REPHY2011', password=generate_password_hash('REPHY2011!', salt_length=16)))
+        db.session.add(Admin(id='REPHY2011', password=generate_password_hash('rephypog!', salt_length=16)))
+        db.session.commit()
 
     if form.validate_on_submit():
         users = list(db.session.execute(db.select(Admin).where(Admin.id == form.id.data)).scalars())
