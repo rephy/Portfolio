@@ -137,7 +137,7 @@ def contact():
             'message': ()
         }
 
-        msg = f'This message was sent by {form_data['name']} ({form_data['email']}):\n\n{form_data['message']}'
+        msg = f"This message was sent by {form_data['name']} ({form_data['email']}):\n\n{form_data['message']}"
 
         sender.compose(target=os.getenv('EMAIL'), from_name='Your Portfolio Contact', to_name='Raphael Manayon', subject=form_data['subject'], message=msg)
         sender.send()
