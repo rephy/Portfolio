@@ -15,7 +15,7 @@ class EmailSender:
             self.connect()
 
     def connect(self):
-        self.connection = SMTP(host='smtp.gmail.com')
+        self.connection = SMTP(host='smtp.gmail.com', port=587)
         self.connection.starttls()
         self.connection.login(user=self.sender, password=self.password)
 
